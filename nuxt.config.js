@@ -1,306 +1,127 @@
-/*!
-
-=========================================================
-* Nuxt Argon Dashboard Laravel - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/nuxt-argon-dashboard-laravel
-* Copyright Creative Tim (https://www.creative-tim.com) & UPDIVISION (https://www.updivision.com)
-
-* Coded by www.creative-tim.com & www.binarcode.com & www.updivision.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-const pkg = require("./package");
-console.log("ENV", process.env.NODE_ENV);
-const {default: isDemo} = require("./plugins/isDemo");
+const pkg = require('./package')
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
-    env: {
-        apiUrl: process.env.API_BASE_URL,
-        baseUrl: process.env.BASE_URL,
-        isDemo: process.env.IS_DEMO,
-        apiKey: process.env.API_KEY,
-    },
-    mode: "spa",
-    meta: {
-        ogType: false,
-        ogDescription: false,
-        author: false,
-        ogTitle: false,
-        description: false,
-        viewport: false,
-        charset: false,
-    },
-    /*
-     ** Headers of the page
-     */
-    head: {
-        title: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION",
-        meta: [
-            {charset: "utf-8"},
-            {name: "viewport", content: "width=device-width, initial-scale=1"},
-            {
-                hid: "description",
-                name: "description",
-                content:
-                    "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-            },
-            {
-                name: "keywords",
-                content:
-                    "creative tim, updivision, html dashboard, nuxt, laravel, vue, vuejs, json:api, json, api, html css dashboard laravel, nuxt argon dashboard laravel, nuxt argon dashboard, argon admin, nuxt dashboard, nuxt admin, web dashboard, bootstrap 4 dashboard laravel, bootstrap 4, css3 dashboard, bootstrap 4 admin laravel, argon dashboard bootstrap 4 laravel, frontend, responsive bootstrap 4 dashboard, argon dashboard, argon laravel bootstrap 4 dashboard"
-            },
-            {
-                itemprop: "name",
-                content: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION"
-            },
-            {
-                itemprop: "description",
-                content:
-                    "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-            },
-            {
-                itemprop: "image",
-                content:
-                    "https://s3.amazonaws.com/creativetim_bucket/products/350/original/opt_ad_nuxt_laravel_thumbnail.jpg"
-            },
-            {
-                name: "twitter:card",
-                content: "product"
-            },
-            {
-                name: "twitter:site",
-                content: "@creativetim"
-            },
-            {
-                name: "twitter:title",
-                content: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION"
-            },
-            {
-                name: "twitter:description",
-                content:
-                    "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-            },
-            {
-                name: "twitter:creator",
-                content: "@creativetim"
-            },
-            {
-                name: "twitter:image",
-                content:
-                    "https://s3.amazonaws.com/creativetim_bucket/products/350/original/opt_ad_nuxt_laravel_thumbnail.jpg"
-            },
-            {
-                property: "fb:app_id",
-                content: "655968634437471"
-            },
-            {
-                property: "og:title",
-                content: "Nuxt Argon Dashboard Laravel by Creative Tim & UPDIVISION"
-            },
-            {
-                property: "og:type",
-                content: "article"
-            },
-            {
-                property: "og:url",
-                content:
-                    "https://www.creative-tim.com/live/nuxt-argon-dashboard-laravel"
-            },
-            {
-                property: "og:image",
-                content:
-                    "https://s3.amazonaws.com/creativetim_bucket/products/350/original/opt_ad_nuxt_laravel_thumbnail.jpg"
-            },
-            {
-                property: "og:description",
-                content:
-                    "Nuxt Argon Dashboard Laravel comes with an API-powered Laravel backend, a Nuxt frontend and an awesome-looking Argon design."
-            },
-            {
-                property: "og:site_name",
-                content: "Creative Tim"
-            }
-        ],
-        link: [
-            {rel: "icon", type: "image/png", href: "/favicon.png"},
-            {
-                rel: "stylesheet",
-                href:
-                    "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-            },
-            {
-                rel: "stylesheet",
-                href: "https://use.fontawesome.com/releases/v5.6.3/css/all.css",
-                integrity:
-                    "sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/",
-                crossorigin: "anonymous"
-            }
-        ]
-    },
+  env: {
+    NODE_ENV: process.env.NODE_ENV,
+    baseURL: process.env.baseURL,
+  },
+  mode: 'spa',
 
-    /*
-     ** Customize the progress-bar color
+  /*
+     ** Nuxt rendering mode
+     ** See https://nuxtjs.org/api/configuration-mode
      */
-    loading: {color: "#fff"},
+  ssr: true,
 
-    /*
-     ** Global CSS
-     */
-    css: [
-        "assets/css/nucleo/css/nucleo.css",
-        "assets/sass/argon.scss",
-        "~assets/css/style.css"
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'Vue Material Admin Template',
+    meta: [
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {
+        hid: 'description', name: 'description', content: 'Vue Material Admin Template is a \n' +
+          '    Google Material Design inspired admin dashboard template built with Vue and Vuetify.'
+      }
     ],
-
-    router: {
-        base: "/",
-        linkExactActiveClass: "active",
-        middleware: ['auth','global']
-    },
-    /*
-     ** Plugins to load before mounting the App
-     */
-    plugins: [
-        "~/plugins/dashboard/dashboard-plugin",
-        {src: "~/plugins/dashboard/world-map", ssr: false},
-        "~/plugins/dashboard/JsonApi.js",
-        "~/plugins/isDemo.js",
+    link: [
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+      }
     ],
+    script: [
+      {src: 'https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.4/echarts-en.min.js'}
+    ]
+  },
 
-    /*
-     ** Nuxt.js modules
-     */
-    modules: [
-        // Doc: https://axios.nuxtjs.org/usage
-        "@nuxtjs/axios",
-        "@nuxtjs/pwa",
-        "@nuxtjs/auth-next",
-        "@nuxtjs/toast"
-    ],
-    /*
-     ** Auth module configuration
-     ** See https://auth.nuxtjs.org/schemes/local.html#options
-     */
-    auth: {
-        resetOnError: true,
-        strategies: {
-            local: {
-                scheme: "~/schemes/authCustomStrategy.js",
-                provider: 'laravel/jwt',
-                url: process.env.API_BASE_URL,
-                // scheme: 'refresh',
-                token: {
-                    property: 'access_token',
-                    maxAge: 60 * 20
-                },
-                refreshToken: {
-                    property: 'refresh_token',
-                    maxAge: 60 * 60,
-                },
-                endpoints: {
-                    login: {
-                        url: "/login",
-                        method: "post",
-                        propertyName: "access_token"
-                    },
-                    logout: {
-                        url: "/logout",
-                        method: "post"
-                    },
-                    user: {
-                        url: "/user",
-                        method: "get",
-                        propertyName: false
-                    },
-                    refresh: {
-                        url: '/refresh',
-                        method: 'post',
-                    },
-                },
-            }
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: {color: '#3adced'},
+
+  /*
+  ** Global CSS
+  */
+  css: [
+    '~/assets/style/theme.styl',
+    '~/assets/style/app.styl',
+    'font-awesome/css/font-awesome.css',
+    'roboto-fontface/css/roboto/roboto-fontface.css'
+  ],
+
+  /*
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+    '@/plugins/vuetify',
+    '@/plugins/vee-validate'
+  ],
+  router: {
+    middleware: ['auth']
+  },
+  /*
+   ** Nuxt.js modules
+   */
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
+  ],
+  axios: {
+    baseURL: process.env.baseURL,
+  },
+  auth: {
+    strategies: {
+      local: {
+        user: {
+          property: "data"
         },
-        redirect: {
-            login: "/login",
-            logout: "/login",
-            home: "/"
-        }
-    },
-
-    /*
-     ** Notification toast module configuration
-     ** See https://github.com/nuxt-community/modules/tree/master/packages/toast?ref=madewithvuejs.com
-     */
-    toast: {
-        position: "top-right",
-        duration: 5000,
-        keepOnHover: true,
-        fullWidth: false,
-        fitToScreen: true,
-        className: "vue-toast-custom",
-        closeOnSwipe: true,
-        register: [
-            // Register custom toasts
-            // @todo add custom messages as they come : login failed, register failed etc
-            {
-                name: "my-error",
-                message: "Oops...Something went wrong",
-                options: {
-                    type: "error"
-                }
-            }
-        ]
-    },
-
-    /*
-     ** Axios module configuration
-     */
-    axios: {
-        // See https://github.com/nuxt-community/axios-module#options
-        baseURL: process.env.API_BASE_URL,
-        headers: {
-            common: {
-                Accept: "application/vnd.api+json",
-                "content-type": "application/vnd.api+json"
-            },
-            post: {
-                "content-type": "application/vnd.api+json"
-            },
-            patch: {
-                "content-type": "application/vnd.api+json"
-            },
-            delete: {
-                "content-type": "application/vnd.api+json"
-            }
-        }
-    },
-
-    /*
-     ** Build configuration
-     */
-    build: {
-        transpile: ["vee-validate/dist/rules"],
-        /*
-         ** You can extend webpack config here
-         */
-        extend(config, ctx) {
+        endpoints: {
+          login: {
+            url: '/login',
+            method: 'post',
+          },
+          user: {
+            url: '/user',
+            method: 'get',
+          },
+          logout: {
+            url: '/logout',
+            method: 'post',
+          },
         },
-        extractCSS: process.env.NODE_ENV === "production",
-        babel: {
-            plugins: [
-                [
-                    "component",
-                    {
-                        libraryName: "element-ui",
-                        styleLibraryName: "theme-chalk"
-                    }
-                ]
-            ]
-        }
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      home: '/',
+    },
+  },
+
+
+  /*
+  ** Build configuration
+  */
+  build: {
+    transpile: ['vuetify/lib'],
+    plugins: [new VuetifyLoaderPlugin()],
+    loaders: {
+      stylus: {
+        import: ["~assets/style/variables.styl"]
+      }
+    },
+
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+
     }
-};
+  }
+}
