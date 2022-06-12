@@ -2,12 +2,12 @@ const Menu = [
   {header: 'Apps'},
   {
     title: 'Users',
-    group: 'widgets',
-    component: 'widgets',
+    group: 'users',
+    component: 'users',
     icon: 'people',
     items: [
       {name: 'index', title: 'List', href: '/users'},
-      {name: 'statistic', title: 'Statistic', badge: 'new', href: '/widgets/statistic'},
+      {name: 'add', title: 'Ajouter', href: '/users/add'},
     ]
   },
   {

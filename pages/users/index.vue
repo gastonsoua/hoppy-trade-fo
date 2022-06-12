@@ -21,11 +21,9 @@
                   <td>{{ props.item.first_name }}</td>
                   <td>{{ props.item.email }}</td>
                   <td>
-                    <v-checkbox
-                      primary
-                      hide-details
-                      v-model="props.item.verified"
-                    ></v-checkbox>
+                    <v-icon color="green" v-if="props.item.verified">
+                      done
+                    </v-icon>
                   </td>
                   <td>
                     <v-btn depressed outline icon fab dark color="primary" small
