@@ -15,6 +15,16 @@ module.exports = {
   ssr: true,
 
   /*
+       ** Nuxt target
+       ** See https://nuxtjs.org/api/configuration-target
+       */
+  target: 'server',
+
+  server: {
+    port: 9010
+  },
+
+  /*
   ** Headers of the page
   */
   head: {
@@ -63,7 +73,6 @@ module.exports = {
     '@/plugins/vee-validate'
   ],
   router: {
-    middleware: ['auth']
   },
   /*
    ** Nuxt.js modules
@@ -99,7 +108,7 @@ module.exports = {
     },
     redirect: {
       login: '/login',
-      logout: '/login',
+      logout: '/',
       home: '/',
     },
   },

@@ -2,11 +2,9 @@
   <div id="appRoot">
     <template>
       <v-app id="inspire" class="app">
-        <app-drawer class="app--drawer"></app-drawer>
         <app-toolbar class="app--toolbar"></app-toolbar>
         <v-content>
           <!-- Page Header -->
-          <page-header></page-header>
           <div class="page-wrapper">
             <nuxt/>
           </div>
@@ -18,18 +16,6 @@
             <v-icon color="pink" small>favorite</v-icon>
           </v-footer>
         </v-content>
-        <!-- Go to top -->
-        <app-fab></app-fab>
-        <v-navigation-drawer
-          class="setting-drawer"
-          temporary
-          right
-          v-model="rightDrawer"
-          hide-overlay
-          fixed
-        >
-          <theme-settings></theme-settings>
-        </v-navigation-drawer>
       </v-app>
     </template>
 

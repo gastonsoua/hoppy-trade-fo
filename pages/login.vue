@@ -12,12 +12,13 @@
                 </div>
                 <v-form>
                   <v-text-field append-icon="person" name="login" label="Login" type="text"
-                                v-model="model.email"></v-text-field>
+                                v-model="model.email" :error-messages="error.email"></v-text-field>
                   <v-text-field append-icon="lock" name="password" label="Password" id="password" type="password"
-                                v-model="model.password"></v-text-field>
+                                v-model="model.password" :error-messages="error.password"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
+                <v-btn block color="primary" :to="'/register'" :loading="loading">Inscription</v-btn>
                 <v-btn block color="primary" @click="login" :loading="loading">Login</v-btn>
               </v-card-actions>
             </v-card>
@@ -30,13 +31,13 @@
 
 <script>
   export default {
-    layout: 'login',
     data: () => ({
       loading: false,
       model: {
         email: '',
         password: ''
-      }
+      },
+      error:{}
     }),
 
     methods: {
@@ -47,10 +48,11 @@
             data: this.model,
           })
           .then(response => {
-            this.$router.push('/dashboard');
+            this.$router.push('/');
           })
           .catch(error => {
-            console.log('error', error);
+            this.loading = false;
+           this.error = error.response.data.errors
           });
       }
     }

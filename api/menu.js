@@ -1,16 +1,6 @@
 const Menu = [
   {header: 'Apps'},
   {
-    title: 'Users',
-    group: 'users',
-    component: 'users',
-    icon: 'people',
-    items: [
-      {name: 'index', title: 'List', href: '/users'},
-      {name: 'add', title: 'Ajouter', href: '/users/add'},
-    ]
-  },
-  {
     title: 'Dashboard',
     group: 'apps',
     icon: 'dashboard',

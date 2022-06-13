@@ -5,18 +5,26 @@
     dark
     app
   >
-    <v-toolbar-title class="ml-0 pl-3">
-      <v-toolbar-side-icon @click.stop="toggleDrawer()"></v-toolbar-side-icon>
-    </v-toolbar-title>
-    <v-spacer></v-spacer>
+    <v-menu offset-y origin="center center" :nudge-right="140" :nudge-bottom="10" transition="scale-transition">
+      <v-btn large flat slot="activator" :to="'/'">
+       home
+      </v-btn>
+    </v-menu>
+    <v-spacer/>
+    <v-menu offset-y origin="center center" :nudge-right="140" :nudge-bottom="10" transition="scale-transition">
+      <v-btn  flat slot="activator" @click="handleLogout" v-if="$auth.loggedIn">
+        Logout
+      </v-btn>
+      <v-btn  flat slot="activator" :to="'/login'" v-if="!$auth.loggedIn">
+        login
+      </v-btn>
+      <v-btn  flat slot="activator" :to="'/register'" v-if="!$auth.loggedIn">
+        Inscription
+      </v-btn>
+    </v-menu>
     <v-btn icon @click="handleFullScreen()">
       <v-icon>fullscreen</v-icon>
     </v-btn>
-    <v-menu offset-y origin="center center" :nudge-right="140" :nudge-bottom="10" transition="scale-transition">
-      <v-btn large flat slot="activator" @click="handleLogout">
-        Logout
-      </v-btn>
-    </v-menu>
   </v-toolbar>
 </template>
 <script>
@@ -33,7 +41,6 @@
       },
       handleLogout() {
         this.$auth.logout()
-        // this.$router.push('/login');
       }
     }
   };
