@@ -70,16 +70,18 @@ module.exports = {
   */
   plugins: [
     '@/plugins/vuetify',
-    '@/plugins/vee-validate'
+    '@/plugins/vee-validate',
+    '@/plugins/axios.js',
+    '@/plugins/set-guest-uuid.js',
   ],
-  router: {
-  },
+  router: {},
   /*
    ** Nuxt.js modules
    */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
+    'cookie-universal-nuxt',
   ],
   axios: {
     baseURL: process.env.baseURL,
