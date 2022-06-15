@@ -36,19 +36,11 @@
 </template>
 
 <script>
-import AppDrawer from '@/components/AppDrawer'
 import AppToolbar from '@/components/AppToolbar'
-import AppFab from '@/components/AppFab'
-import PageHeader from '@/components/PageHeader'
-import ThemeSettings from '@/components/ThemeSettings'
 
 export default {
   components: {
-    AppDrawer,
     AppToolbar,
-    AppFab,
-    PageHeader,
-    ThemeSettings
   },
   data: () => ({
     expanded: true,
