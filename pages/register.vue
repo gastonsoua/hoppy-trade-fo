@@ -64,17 +64,16 @@ export default {
   methods: {
     register() {
       this.loading = true;
-      console.log( this.model)
       this.$axios
         .$post('/register', this.model)
         .then(
           response => {
             this.error = {}
-            // this.$router.push('/');
+            this.$router.push('/');
           },
           error => {
             this.loading = false;
-            console.log(this.error = error.response.data.errors)
+            this.error = error.response.data.errors
           }
         );
     }
